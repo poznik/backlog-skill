@@ -1,0 +1,14 @@
+{
+  "name": "backlog-skill",
+  "description": "The backlog skill: a file-based project backlog kept by one script, for work shared between an owner and coding agents.",
+  "owner": {
+    "name": "Nikolay Pozharskiy"
+  },
+  "plugins": [
+    {
+      "name": "backlog",
+      "source": "./",
+      "description": "File-based project backlog for an owner and coding agents: one file per task, a generated index, an idea inbox and a ledger of closed tasks."
+    }
+  ]
+}

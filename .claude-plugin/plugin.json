@@ -1,0 +1,12 @@
+{
+  "name": "backlog",
+  "description": "File-based project backlog for an owner and coding agents: one file per task, a generated index of where the owner is needed, what is quick and what can run overnight, an idea inbox and a ledger of closed tasks.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nikolay Pozharskiy"
+  },
+  "homepage": "https://github.com/poznik/backlog-skill",
+  "repository": "https://github.com/poznik/backlog-skill",
+  "license": "Apache-2.0",
+  "keywords": ["backlog", "tasks", "todo", "planning", "agents"]
+}
