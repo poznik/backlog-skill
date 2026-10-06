@@ -41,6 +41,7 @@ effort: 5m                              # 15m, 2h, 1d, 2-3d — работа и�
 where: any                              # {{WHERE}} — где делается
 due:                                    # YYYY-MM-DD, если есть срок
 tags: [check]                           # словарь ниже
+block:                                  # необязательно: функциональный блок из `blocks` в config.json
 related: [{{EXAMPLE_ID_2}}]                    # связанные задачи, в том числе пара «перенос»
 after: [{{EXAMPLE_ID_2}}]                      # только если не начать, пока эти не закрыты
 created: {{DATE}}
@@ -80,6 +81,7 @@ from:                                   # откуда пришла: докум�
 | Где нужен владелец | `{{COMMAND}} list --owner` |
 | Быстрое для агента | `{{COMMAND}} list --quick` |
 | На ночь | `{{COMMAND}} list --night` — `autonomous: yes`, по приоритету |
+| Отчёт владельцу | `{{COMMAND}} report` — Markdown: кто делает (агент сам, вместе, владелец), приоритет, блок и сумма оценок. Отбор — `--area`, `--p`, `--who`, `--block`, `--tag`; заголовки — `--group area,block`, строки — `--sort who,priority,effort` |
 | Проверка | `{{COMMAND}} check` — поля, ID, ссылки, свежесть индекса |
 | Задача оказалась в чужой области | `{{COMMAND}} move {{EXAMPLE_ID}} {{EXAMPLE_AREA_2}}` — новый номер там, ссылки на неё переписаны |
 | Номер заняла другая сессия | `{{COMMAND}} reid {{EXAMPLE_ID}}` — следующий свободный номер |

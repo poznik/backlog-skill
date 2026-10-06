@@ -131,6 +131,7 @@ python backlog-skill/skills/backlog/scripts/init_backlog.py --root <проект
 | Закрыть | `backlog.py done API-001 ok "что вышло, коммит"` |
 | Взять в работу, отпустить | `backlog.py take API-001 "машина, сессия"`, `release API-001` |
 | Списки | `backlog.py list --owner`, `--quick`, `--night`, `--area api`, `--tag bug` |
+| Отчёт: кто делает, приоритет, блок, стоимость | `backlog.py report --area api,web --p P1,P2 --who alone` |
 | Проверка перед коммитом | `backlog.py check` |
 | Перенести в другую область | `backlog.py move API-001 web` |
 | Новый номер, если один взяли две сессии | `backlog.py reid API-001` |

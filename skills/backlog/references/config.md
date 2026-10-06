@@ -31,6 +31,10 @@ README is written once at install time and is the project's own file from then o
     "decision": "the owner's decision",
     "stand": "needs the test server"
   },
+  "blocks": {
+    "login": "Sign-in and accounts",
+    "billing": "Billing"
+  },
   "quick_minutes": 60,
   "labels": {}
 }
@@ -47,6 +51,7 @@ README is written once at install time and is the project's own file from then o
 | `night_where` | Places the overnight list takes tasks from; empty means any |
 | `night_executors` | Executors the overnight list is for; empty means every agent |
 | `tags` | Allowed tags with their meaning. `check`, `decision` and `port` are always allowed |
+| `blocks` | Optional. Functional block → heading, the same keys for every area. A task names one in its `block` field; `report` groups by them in this order. Without it tasks carry no block |
 | `quick_minutes` | The upper bound of the "quick" list |
 | `labels` | Overrides for single lines the tool writes; see "Another language" |
 
@@ -79,6 +84,14 @@ From then on tasks bound to a machine carry `where: <place>`.
 
 **Change a task's fields.** Edit the front matter of its file, then run `index`: the summaries are
 built from the files and go stale otherwise, which `check` reports.
+
+**Add functional blocks.** When the owner wants the backlog cut by feature and not only by area:
+agree on 5-12 blocks that cover the product (features the owner would name, plus one for
+architecture and upkeep), add them to `blocks`, then write `block: <key>` after `tags:` in the
+task files - by reading titles, and bodies where a title is not enough. `check` refuses a block
+that `blocks` does not name; a task without one is allowed and falls under "No block" in the
+report. New tasks get it with `new --block`, a port inherits its source's. Add the field and the
+list of blocks to the project's `backlog/README.md`.
 
 **Add a tag.** Add it to `tags` with a one-line meaning and to the list in README.md. Keep the
 vocabulary small: tags that describe a needed resource (a test server, a live counterpart, a

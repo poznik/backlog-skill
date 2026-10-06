@@ -41,6 +41,7 @@ effort: 5m                              # 15m, 2h, 1d, 2-3d — the executor's w
 where: any                              # {{WHERE}} — where it is done
 due:                                    # YYYY-MM-DD, if there is a deadline
 tags: [check]                           # the vocabulary is below
+block:                                  # optional: a functional block from `blocks` of config.json
 related: [{{EXAMPLE_ID_2}}]                    # related tasks, including the other half of a port
 after: [{{EXAMPLE_ID_2}}]                      # only when it cannot start before these are closed
 created: {{DATE}}
@@ -81,6 +82,7 @@ not edited by hand.
 | Where the owner is needed | `{{COMMAND}} list --owner` |
 | Quick ones for the agent | `{{COMMAND}} list --quick` |
 | Overnight | `{{COMMAND}} list --night` — `autonomous: yes`, by priority |
+| A report for the owner | `{{COMMAND}} report` — Markdown: who does it (the agent alone, together, the owner), priority, block and summed cost. Filters `--area`, `--p`, `--who`, `--block`, `--tag`; headings `--group area,block`, rows `--sort who,priority,effort` |
 | Check | `{{COMMAND}} check` — fields, IDs, references, a fresh index |
 | The task belongs to another area | `{{COMMAND}} move {{EXAMPLE_ID}} {{EXAMPLE_AREA_2}}` — a new number there, references to it rewritten |
 | Another session took the number | `{{COMMAND}} reid {{EXAMPLE_ID}}` — the next free number |

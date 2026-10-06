@@ -131,6 +131,7 @@ The commands behind them:
 | Close | `backlog.py done API-001 ok "what came out, the commit"` |
 | Take into work, let go | `backlog.py take API-001 "machine, session"`, `release API-001` |
 | Lists | `backlog.py list --owner`, `--quick`, `--night`, `--area api`, `--tag bug` |
+| A report: who does it, priority, block, cost | `backlog.py report --area api,web --p P1,P2 --who alone` |
 | Check before a commit | `backlog.py check` |
 | Move to another area | `backlog.py move API-001 web` |
 | A fresh number after two sessions took one | `backlog.py reid API-001` |

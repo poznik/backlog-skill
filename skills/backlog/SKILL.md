@@ -97,6 +97,7 @@ the summaries exist so that you do not have to.
 | "Where am I needed?", "what should I check?" | `backlog.py list --owner`, or the first section of INDEX.md |
 | "Anything quick?" | `backlog.py list --quick` |
 | "What can you do overnight / while I am away?" | `backlog.py list --night`, then work down it by priority |
+| "Show the backlog by who does it / by block / what it costs", "what is on me?" | `backlog.py report`, see "Reports" below |
 | "Note this idea" | `backlog.py idea "text"` - no questions, no fields |
 | "Make a task", or you notice a loose end | `backlog.py new`, see below, then write the body |
 | "The same for the other client/module" | `backlog.py port <ID> <area>` - a linked task there; the source stays |
@@ -117,6 +118,26 @@ Lists are comma-separated. `--related` links the named open tasks back to the ne
 `--after` names tasks that have to be closed first. The command prints the file: open it and
 replace the template with the real body - `check` refuses a body left as the template. The index
 is rebuilt by every command; after editing a field by hand, run `backlog.py index`.
+
+**Reports.** `backlog.py report` prints Markdown for the owner: a summary of the groups - how
+many tasks the agent does alone, how many together with the owner, how many are the owner's own,
+and the summed estimates - then one table per group. It writes no file, so nothing goes stale.
+
+```bash
+backlog.py report                                    # every live area, by area and block
+backlog.py report --area api,web --p P1,P2           # only these areas and priorities
+backlog.py report --who alone --group "" --sort priority,effort    # one table: an agent's package
+backlog.py report --who owner --group who,area       # what waits for the owner, per area
+```
+
+Filters: `--area`, `--p`, `--who` (`alone`, `together`, `owner`, `other`), `--block` (`-` for
+tasks without one), `--tag`. `--group` names the headings (`area`, `block`, `who`, `priority`,
+nested in that order), `--sort` the order of rows (`who`, `priority`, `effort`, `area`, `block`,
+`id`). "Who" is read off the fields: an agent with `autonomous: yes` is *alone*, an agent with
+`partly` or `no` is *together* (starred when it cannot start without the owner), the owner's
+tasks are the owner's. Cost is the sum of `effort`, low end to high end, with a day of 8 hours.
+Relay the report as it is, or pick from it; to plan an unattended session take
+`--who alone --p P0,P1,P2` and choose tasks of one block so they share context.
 
 **Record loose ends at once.** When you notice something undone that is outside the current
 change, make it a task then, not a remark in the final message: the conversation ends and takes
@@ -147,6 +168,7 @@ that reader.
 | `where` | A machine or environment the task is bound to; `any` otherwise |
 | `due` | A real deadline, `YYYY-MM-DD`; empty when there is none |
 | `tags` | `check` (verify by hand or eye) and `decision` (the owner decides) sort the owner's section; the rest is the project's vocabulary in `config.json` |
+| `block` | Optional: the functional block the task belongs to - "calls", "login", "billing" - a key of `blocks` in `config.json`. Blocks cut across areas, so the report shows a feature's server and client tasks under one name. Leave it out in a project that has no blocks |
 | `related` | Tasks this one pairs with or should be read with. Both directions for a port |
 | `after` | Tasks that have to be closed before this one can start. While any is open the task stays out of the quick and overnight lists |
 | `from` | Where it came from: document and section, review, conversation. It keeps the trail when lists are migrated |
